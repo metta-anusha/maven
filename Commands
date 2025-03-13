@@ -1,0 +1,99 @@
+1-->Create a maven project
+mvn archetype:generate -DgroupId=com.example -DartifactId=ToDoList1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+2-->naviagate to that 
+cd ToDoList1/src/main/java/com/example/
+
+3-->Open App.java and replace its content with your own program
+
+4-->update pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>ToDoList1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ToDoList1</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
+</dependency>
+</dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+5-->build the project
+cd ToDoList1
+mvn clean package
+
+
+6-->for output refer 
+java -jar target/ToDoList1-1.0-SNAPSHOT.jar
+
+unzip -p target/ToDoList1-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF
+
+7-->now install java 17 
+sudo amazon-linux-extras enable corretto8
+sudo yum install -y java-17-amazon-corretto-devel
+
+8-->remane the class name 
+public class Main { ----to----public class App {
+
+9-->Update the pom 
+<configuration>                                          
+    <mainClass>com.example.App</mainClass>  ---to---  
+</configuration>
+
+<configuration>
+    <mainClass>com.example.Main</mainClass>
+</configuration>
+
+10-->For build 
+mvn clean package
+
+11-->for output 
+java -jar target/ToDoList1-1.0-SNAPSHOT.jar
+
+
+
+
